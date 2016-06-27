@@ -62,7 +62,7 @@ p {
 #header {
   padding-top: 0.5rem;
   padding-bottom: 1rem;
-  background-color: #252d35; }
+  background-color: #188dd2; }
   #header:after {
     content: "";
     display: table;
@@ -120,6 +120,7 @@ p {
         float: left;
         position: relative; }
         #header #navbar ul li > a {
+          font-size: 12px;
           display: inline-block;
           padding: 0 8px;
           line-height: 2.8rem;
