@@ -171,7 +171,7 @@ class Cache extends Getters
                 break;
 
             case 'memcache':
-                $memcache = new \Memcached();
+                $memcache = new \Memcache();
                 $memcache->connect($this->config->get('system.cache.memcache.server', 'localhost'),
                     $this->config->get('system.cache.memcache.port', 11211));
                 $driver = new DoctrineCache\MemcacheCache();
