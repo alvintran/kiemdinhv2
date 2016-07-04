@@ -67,24 +67,54 @@ p {
     content: "";
     display: table;
     clear: both; }
-  #header .logo-surround {
+  #top-header {
+    overflow: hidden;
+    padding: 1.5rem 7rem;
+  }
+  #top-header .com-info {
     position: relative;
+    padding-left: 170px;
+  }
+  #top-header .com-name {
+    margin: 0;
+    color: #333;
+    text-align: left;
+    line-height: 25px;
+    font-size: 16px !important;
+    font-weight: bold;
+  }
+  #top-header .com-info p {
+    margin: 0;
+    font-size: 14px;
+  }
+  #top-header .com-phone {
+    font-size: 26px !important;
+    color: #ed6f6d;
+    position: absolute;
+    top: 25px;
+    right: 0;
+    font-weight: bold;
+  }
+  #top-header .com-phone span {
+    font-size: 16px;
+    color: #333;
+    font-weight: normal;
+  }
+  #top-header .logo-surround {
+    margin-top: 9px;
     float: left; }
-  #header #logo {
-    background: url(../images/logo.png);
+  #top-header #logo {
+    background: url(../images/logo2.png);
     background-position: 0 0;
     background-repeat: no-repeat;
     display: block;
-    width: 255px;
-    height: 50px;
-    z-index: 2;
-    top: 5px;
-    position: relative; }
+    width: 170px;
+    height: 50px; }
     @media only all and (min-width: 60em) and (max-width: 74.938em) {
       #header #logo {
         width: 220px;
         background-size: 220px; } }
-  #header .logo-accent {
+  #top-header .logo-accent {
     position: absolute;
     z-index: 1;
     width: 36px;
@@ -94,7 +124,7 @@ p {
     border-radius: 100%;
     background: #ed6f6d; }
     @media only all and (min-width: 60em) and (max-width: 74.938em) {
-      #header .logo-accent {
+      #top-header .logo-accent {
         width: 30px;
         height: 30px;
         top: 13px;
@@ -102,7 +132,6 @@ p {
   #header #navbar {
     font-size: 0.7rem;
     font-family: "Arial", "Helvetica", "Geneva", sans-serif;
-    float: right;
     border-radius: 3px;
     margin-top: 0.5rem; }
     @media only all and (max-width: 59.938em) {
@@ -149,7 +178,8 @@ p {
         #header #navbar ul li:hover > ul {
           display: list-item; }
       @media only all and (max-width: 59.938em) {
-        #header #navbar ul {
+        #header #navbar ul,
+        #top-header .com-info {
           display: none; } }
       #header #navbar ul ul {
         display: none;

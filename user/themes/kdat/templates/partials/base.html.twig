@@ -47,20 +47,32 @@
 <body id="top" class="{{ page.header.body_classes }}">
     <div id="sb-site">
         {% block header %}
+        <div id="top-header">
+            <div class="logo-surround">
+                <a href="/" title="{{ site.title|e('html') }}" id="logo"></a>
+            </div>
+            <div class="com-info">
+                {% if page.route == '/' %}
+                    <h1 class="com-name">Công ty cổ phần kiểm định đo lường và huấn luyện an toàn Việt Nam</h1>
+                {% else %}
+                    <p class="com-name">Công ty cổ phần kiểm định đo lường và huấn luyện an toàn Việt Nam</p>
+                {% endif %}
+                <p>Địa chỉ: Số 4 ngõ 183 phố Hoàng Văn Thái, Thanh Xuân, Hà Nội</p>
+                <p>Email: <a href="mail:kiemdinh247@gmail.com">kiemdinh247@gmail.com</a></p>
+                <p class="com-phone">Phone: 0984 126 797 <span>(Mr. Tùng)</span></p>
+            </div>
+        </div>
         <header id="header">
-                <div class="logo-surround">
-                    <a href="/" title="{{ site.title|e('html') }}" id="logo"></a>
-                </div>
-                <div id="navbar">
-                    {% block header_extra %}{% endblock %}
-                    {% if config.plugins.langswitcher.enabled %}
-                    {% include 'partials/langswitcher.html.twig' %}
-                    {% endif %}
-                    {% block header_navigation %}
-                    {% include 'partials/navigation.html.twig' %}
-                    {% endblock %}
-                    <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
-                </div>
+            <div id="navbar">
+                {% block header_extra %}{% endblock %}
+                {% if config.plugins.langswitcher.enabled %}
+                {% include 'partials/langswitcher.html.twig' %}
+                {% endif %}
+                {% block header_navigation %}
+                {% include 'partials/navigation.html.twig' %}
+                {% endblock %}
+                <span class="panel-activation sb-toggle-left navbar-left menu-btn fa fa-bars"></span>
+            </div>
         </header>
         {% endblock %}
         {% block body %}
