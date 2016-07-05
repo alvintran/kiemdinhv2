@@ -21,7 +21,7 @@
                                 {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
                             {% endif %}
                             <h4><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></h4>
-                            {{ p.summary | safe_truncate }}
+                            {{ p.summary | truncate(100) }}
                         </div>
                     {% endfor %}
                 </div>
@@ -44,7 +44,7 @@
                                 {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
                             {% endif %}
                             <h4><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></h4>
-                            {{ p.summary | safe_truncate }}
+                            {{ p.summary | truncate(100) }}
                         </div>
                     {% endfor %}
                 </div>
