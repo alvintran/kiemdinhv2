@@ -3,6 +3,14 @@ title: ' Kiểm định bể, bồn, thiết bị chứa'
 summary:
     enabled: '1'
     format: short
+taxonomy:
+    tag:
+        - kiemdinhthietbi
+        - kiemdinh
+        - thietbi
+    category:
+        - 'kiểm định thiết bị'
+        - 'kiem dinh an toan'
 ---
 
 Kiểm định bể, bồn, thiết bị chứa là quy định bắt buộc phải thực hiện nhằm đảm bảo an toàn lao động khi sử dụng trong hoạt động sản xuất. Các bể, bồn chứa hiện nay được sử dụng khá phổ biến  và cần phải được tiến hành kiểm định nhằm đảm bảo chất lượng.

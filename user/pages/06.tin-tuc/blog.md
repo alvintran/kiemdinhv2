@@ -7,5 +7,9 @@ content:
         dir: desc
         by: date
     items: '@self.children'
+
+metadata:
+    generator: 'Nguyên Hà Tech - http://nguyenhats.com'
+    author: '@kiemdinhantoan'
 ---
 

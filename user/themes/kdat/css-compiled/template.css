@@ -101,6 +101,8 @@ p {
     font-weight: normal;
   }
   #top-header .logo-surround {
+    position: relative;
+    z-index: 2;
     margin-top: 9px;
     float: left; }
   #top-header #logo {
@@ -225,11 +227,41 @@ p {
       @media only all and (max-width: 59.938em) {
         #header #navbar .panel-activation {
           display: inline-block; } }
-
+#services .hot-services h2 {
+    font-size: 14px;
+}
+#new-posts h3 {
+    margin: 10px 0 15px;
+}
+#new-posts h3,
+#new-posts h3 a {
+    color: #333;
+    font-size: 22px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+#new-posts .new-post-item {
+    font-size: 13px;
+    overflow: hidden;
+}
+#new-posts .new-post-item h4 {
+    border: none;
+    margin: 0 0 10px;
+    font-size: 14px;
+}
+#new-posts .new-post-item p {
+    margin: 10px 0;
+    line-height: 18px;
+}
+#new-posts .new-post-item img {
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
 #footer {
   position: absolute;
-  background: #ccc;
-  color: #333;
+  background: #333;
+  color: #fff;
   padding: 25px 0;
   right: 0;
   bottom: 0;

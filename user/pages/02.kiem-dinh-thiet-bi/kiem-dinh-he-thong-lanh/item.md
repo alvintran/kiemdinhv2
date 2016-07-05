@@ -7,6 +7,7 @@ taxonomy:
     tag:
         - kiemdinh
         - antoan
+        - kiemdinhthietbi
     category:
         - 'kiểm định thiết bị'
 ---

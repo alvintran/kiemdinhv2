@@ -1,0 +1,23 @@
+<div class="modular-row">
+    <div class="row">
+        <ul id="services" class="list-unstyled">
+            {% for p in page.collection %}
+                {% set header_image = p.header.header_image|defined(true) %}
+                {% set header_image_width  = p.header.header_image_width|defined(900) %}
+                {% set header_image_height = p.header.header_image_height|defined(300) %}
+                {% set header_image_file = p.header.header_image_file %}
+                <li class="col-md-3 col-sm-3 col-xs-6 hot-services">
+                    {% if header_image %}
+                        {% if header_image_file %}
+                            {% set header_image_media = p.media.images[header_image_file] %}
+                        {% else %}
+                            {% set header_image_media = p.media.images|first %}
+                        {% endif %}
+                        <a href="{{ p.url }}" title="{{ p.title }}">{{ header_image_media.cropZoom(header_image_width, header_image_height).html }}</a>
+                    {% endif %}
+                    <h2><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></h2>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

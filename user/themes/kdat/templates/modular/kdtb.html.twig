@@ -1,0 +1,55 @@
+<div class="modular-row">
+    <div id="new-posts" class="row">
+        <div class="col-md-8 col-sm-12 col-xs-12">
+            {% set kdtb = page.collection %}
+            {% set ktktat = page.collection('ktktat') %}
+            <div class="new-post-item">
+                <h3><a href="{{ kdtb.params.url }}" title="{{ kdtb.params.title }}">{{ kdtb.params.title }}</a></h3>
+                {% for p in kdtb %}
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        {% set header_image = p.header.header_image|defined(true) %}
+                        {% set header_image_width  = p.header.header_image_width|defined(100) %}
+                        {% set header_image_height = p.header.header_image_height|defined(100) %}
+                        {% set header_image_file = p.header.header_image_file %}
+                        {% if header_image %}
+                            {% if header_image_file %}
+                                {% set header_image_media = p.media.images[header_image_file] %}
+                            {% else %}
+                                {% set header_image_media = p.media.images|first %}
+                            {% endif %}
+                            {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
+                        {% endif %}
+                        <h4><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></h4>
+                        {{ p.summary | safe_truncate }}
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="new-post-item">
+                <h3><a href="{{ ktktat.params.url }}" title="{{ ktktat.params.title }}">{{ ktktat.params.title }}</a></h3>
+                <div class="row">
+                    {% for p in ktktat %}
+                        <div class="col-md-6 col-sm-6 col-xs-12 new-post-item">
+                            {% set header_image = p.header.header_image|defined(true) %}
+                            {% set header_image_width  = p.header.header_image_width|defined(100) %}
+                            {% set header_image_height = p.header.header_image_height|defined(100) %}
+                            {% set header_image_file = p.header.header_image_file %}
+                            {% if header_image %}
+                                {% if header_image_file %}
+                                    {% set header_image_media = p.media.images[header_image_file] %}
+                                {% else %}
+                                    {% set header_image_media = p.media.images|first %}
+                                {% endif %}
+                                {{ header_image_media.cropZoom(header_image_width, header_image_height).html }}
+                            {% endif %}
+                            <h4><a href="{{ p.url }}" title="{{ p.title }}">{{ p.title }}</a></h4>
+                            {{ p.summary | safe_truncate }}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 hidden-xs">
+            <h3>Thông tin thêm</h3>
+        </div>
+    </div>
+</div>

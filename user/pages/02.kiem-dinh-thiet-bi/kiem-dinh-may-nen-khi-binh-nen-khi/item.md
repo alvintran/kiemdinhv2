@@ -3,6 +3,14 @@ title: ' Kiểm định máy nén khí, bình nén khí'
 summary:
     enabled: '1'
     format: short
+taxonomy:
+    tag:
+        - kiemdinhthietbi
+        - kiemdinh
+        - thietbi
+    category:
+        - 'kiểm định thiết bị'
+        - 'kiem dinh an toan'
 ---
 
 Máy nén khí nằm trong danh mục bình chịu áp lực cần được kiểm định chặt chẽ mới được sử dụng. Bởi môi chất làm việc của máy nén khí, bình nén khí là không khí nén, vậy nên khi bị nén ở áp suất cao sẽ khiến xảy ra hiện tượng nổ rất nguy hiểm.

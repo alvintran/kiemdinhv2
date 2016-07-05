@@ -1,5 +1,20 @@
 ---
-title: 'Trang chủ'
+title: 'Giới thiệu'
+summary:
+    enabled: '1'
+    format: short
+
+metadata:
+    generator: 'Nguyên Hà Tech - http://nguyenhats.com'
+    author: '@kiemdinhantoan'
+
+content:
+    limit: 5
+    pagination: '1'
+    order:
+        dir: desc
+        by: date
+    items: '@self.children'
 ---
 
 # Sự cần thiết của kiểm định an toàn

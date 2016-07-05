@@ -9,6 +9,7 @@ taxonomy:
         - kiemdinh
         - antoan
         - 'van an toan'
+        - kiemdinhthietbi
     category:
         - 'kiểm định thiết bị'
 ---

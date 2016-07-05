@@ -7,6 +7,10 @@ taxonomy:
     tag:
         - kiemdinh
         - noihoi
+        - kiemdinhthietbi
+        - 'van an toan'
+        - antoan
+        - thietbi
     category:
         - 'kiểm định thiết bị'
 ---
