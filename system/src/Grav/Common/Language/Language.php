@@ -1,11 +1,16 @@
 <?php
+/**
+ * @package    Grav.Common.Language
+ *
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Language;
 
 use Grav\Common\Grav;
+use Grav\Common\Config\Config;
 
-/**
- * Language and translation functionality for Grav
- */
 class Language
 {
     protected $grav;
@@ -15,7 +20,10 @@ class Language
     protected $fallback_languages = [];
     protected $default;
     protected $active = null;
+
+    /** @var Config $config */
     protected $config;
+
     protected $http_accept_language;
     protected $lang_in_url = false;
 
@@ -162,7 +170,7 @@ class Language
      */
     public function setActiveFromUri($uri)
     {
-        $regex = '/(^\/(' . $this->getAvailable() . '))(?:\/.*|$)/i';
+        $regex = '/(^\/(' . $this->getAvailable() . '))(?:\/|\?|$)/i';
 
         // if languages set
         if ($this->enabled()) {
@@ -170,7 +178,7 @@ class Language
             if (preg_match($regex, $uri, $matches)) {
                 $this->lang_in_url = true;
                 $this->active = $matches[2];
-                $uri = preg_replace("/\\" . $matches[1] . "/", '', $matches[0], 1);
+                $uri = preg_replace("/\\" . $matches[1] . "/", '', $uri, 1);
 
                 // store in session if different
                 if ($this->config->get('system.session.enabled', false)
@@ -195,6 +203,15 @@ class Language
                         }
                     }
 
+                    // repeat if not found, try base language only - fixes Safari sending the language code always
+                    // with a locale (e.g. it-it or fr-fr)
+                    foreach ($preferred as $lang) {
+                        $lang = substr($lang, 0, 2);
+                        if ($this->validate($lang)) {
+                            $this->active = $lang;
+                            break;
+                        }
+                    }
                 }
             }
         }
@@ -283,6 +300,21 @@ class Language
         }
 
         return $this->page_extensions;
+    }
+
+    /**
+     * Resets the page_extensions value.
+     *
+     * Useful to re-initialize the pages and change site language at runtime, example:
+     *
+     * ```
+     * $this->grav['language']->setActive('it');
+     * $this->grav['language']->resetFallbackPageExtensions();
+     * $this->grav['pages']->init();
+     * ```
+     */
+    public function resetFallbackPageExtensions() {
+        $this->page_extensions = null;
     }
 
     /**
@@ -406,7 +438,7 @@ class Language
             }
 
             foreach ((array)$languages as $lang) {
-                $translation_array = (array)$this->config->getLanguages()->get($lang . '.' . $key, null);
+                $translation_array = (array)Grav::instance()['languages']->get($lang . '.' . $key, null);
                 if ($translation_array && array_key_exists($index, $translation_array)) {
                     return $translation_array[$index];
                 }
@@ -431,7 +463,7 @@ class Language
      */
     public function getTranslation($lang, $key, $array_support = false)
     {
-        $translation = $this->config->getLanguages()->get($lang . '.' . $key, null);
+        $translation = Grav::instance()['languages']->get($lang . '.' . $key, null);
         if (!$array_support && is_array($translation)) {
             return (string)array_shift($translation);
         }

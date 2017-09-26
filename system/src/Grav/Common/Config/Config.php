@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package    Grav.Common.Config
+ *
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Config;
 
 use Grav\Common\Debugger;
@@ -6,16 +13,11 @@ use Grav\Common\Grav;
 use Grav\Common\Data\Data;
 use Grav\Common\Service\ConfigServiceProvider;
 
-/**
- * The Config class contains configuration information.
- *
- * @author RocketTheme
- * @license MIT
- */
 class Config extends Data
 {
     protected $checksum;
     protected $modified = false;
+    protected $timestamp = 0;
 
     public function key()
     {
@@ -38,6 +40,15 @@ class Config extends Data
         }
 
         return $this->modified;
+    }
+
+    public function timestamp($timestamp = null)
+    {
+        if ($timestamp !== null) {
+            $this->timestamp = $timestamp;
+        }
+
+        return $this->timestamp;
     }
 
     public function reload()

@@ -1,0 +1,61 @@
+#top-header {
+    background: url('../images/kdat.jpg') no-repeat top left;
+    background-size: 100%;
+    height: 150px;
+}
+.com-info, .com-name {
+    color: #fff !important;
+}
+#top-header .com-name,
+#top-header .com-info p {
+    text-align: center;
+    line-height: 48px;
+    font-size: 36px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    width: 700px;
+    margin: 0 auto;
+}
+.menu-services {
+    margin: 0 !important;
+    overflow: hidden;
+    border: 1px solid #ccc;
+    border-top: none;
+    padding: 10px 0;
+    border-radius: 0 0 4px 4px;
+}
+.menu-services li {
+    display: block;
+    width: 100%;
+    padding: 3px 5px;
+}
+.menu-services li a {
+    color: #444 !important;
+    text-decoration: none;
+}
+.menu-services li a:hover {
+    color: #ed6f6d !important;
+}
+.menu-sidebar {
+    margin: 0 !important;
+    color: #fff !important;
+    background-color: #188dd2;
+    padding: 10px !important;
+    border-radius: 4px 4px 0 0;
+    border: none !important;
+    box-shadow: none;
+}
+.menu-services li .fa-mobile-phone {
+    font-size: 30px;
+    position: relative;
+    top: 4px;
+    margin-right: 5px;
+}
+.menu-services_contact {
+    padding: 5px 15px !important;
+}
+#new-posts h3, #new-posts h3 a {
+    text-decoration: none;
+}
+.new-post-item {
+    margin-bottom: 40px;
+}

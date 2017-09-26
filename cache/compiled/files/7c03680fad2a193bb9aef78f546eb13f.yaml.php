@@ -2,7 +2,7 @@
 return [
     '@class' => 'Grav\\Common\\File\\CompiledYamlFile',
     'filename' => 'plugins://comments/comments.yaml',
-    'modified' => 1466834606,
+    'modified' => 1506415801,
     'data' => [
         'enabled' => true,
         'enable_on_routes' => [
@@ -17,8 +17,8 @@ return [
             'fields' => [
                 0 => [
                     'name' => 'name',
-                    'label' => 'Name',
-                    'placeholder' => 'Enter your name',
+                    'label' => 'PLUGIN_COMMENTS.NAME_LABEL',
+                    'placeholder' => 'PLUGIN_COMMENTS.NAME_PLACEHOLDER',
                     'autocomplete' => 'on',
                     'type' => 'text',
                     'validate' => [
@@ -27,8 +27,8 @@ return [
                 ],
                 1 => [
                     'name' => 'email',
-                    'label' => 'Email',
-                    'placeholder' => 'Enter your email address',
+                    'label' => 'PLUGIN_COMMENTS.EMAIL_LABEL',
+                    'placeholder' => 'PLUGIN_COMMENTS.EMAIL_PLACEHOLDER',
                     'type' => 'email',
                     'validate' => [
                         'required' => true
@@ -36,8 +36,8 @@ return [
                 ],
                 2 => [
                     'name' => 'text',
-                    'label' => 'Message',
-                    'placeholder' => 'Enter your message',
+                    'label' => 'PLUGIN_COMMENTS.MESSAGE_LABEL',
+                    'placeholder' => 'PLUGIN_COMMENTS.MESSAGE_PLACEHOLDER',
                     'type' => 'textarea',
                     'validate' => [
                         'required' => true
@@ -69,13 +69,13 @@ return [
             'buttons' => [
                 0 => [
                     'type' => 'submit',
-                    'value' => 'Submit'
+                    'value' => 'PLUGIN_COMMENTS.SUBMIT_COMMENT_BUTTON_TEXT'
                 ]
             ],
             'process' => [
                 0 => [
                     'email' => [
-                        'subject' => '[New Comment] from {{ form.value.name|e }}',
+                        'subject' => 'PLUGIN_COMMENTS.EMAIL_NEW_COMMENT_SUBJECT',
                         'body' => '{% include \'forms/data.html.twig\' %}'
                     ]
                 ],
@@ -83,7 +83,10 @@ return [
                     'addComment' => NULL
                 ],
                 2 => [
-                    'message' => 'Thank you for writing your comment!'
+                    'message' => 'PLUGIN_COMMENTS.THANK_YOU_MESSAGE'
+                ],
+                3 => [
+                    'reset' => true
                 ]
             ]
         ]

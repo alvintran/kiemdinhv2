@@ -1,4 +1,11 @@
 <?php
+/**
+ * @package    Grav.Common
+ *
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common;
 
 use DebugBar\DataCollector\ConfigCollector;
@@ -6,10 +13,6 @@ use DebugBar\JavascriptRenderer;
 use DebugBar\StandardDebugBar;
 use Grav\Common\Config\Config;
 
-/**
- * Class Debugger
- * @package Grav\Common
- */
 class Debugger
 {
     /** @var Grav $grav */
@@ -84,6 +87,14 @@ class Debugger
     public function addAssets()
     {
         if ($this->enabled()) {
+
+            // Only add assets if Page is HTML
+            $page = $this->grav['page'];
+            if ($page->templateFormat() != 'html') {
+                $this->enabled = false;
+                return $this;
+            }
+
             /** @var Assets $assets */
             $assets = $this->grav['assets'];
 
@@ -107,6 +118,13 @@ class Debugger
         }
 
         return $this;
+    }
+
+    public function getCaller($ignore = 2)
+    {
+        $trace = debug_backtrace(false, $ignore);
+
+        return array_pop($trace);
     }
 
     /**
@@ -210,6 +228,21 @@ class Debugger
     {
         if ($this->enabled()) {
             $this->debugbar['messages']->addMessage($message, $label, $isString);
+        }
+
+        return $this;
+    }
+
+    /**
+     * Dump exception into the Messages tab of the Debug Bar
+     *
+     * @param \Exception $e
+     * @return Debugger
+     */
+    public function addException(\Exception $e)
+    {
+        if ($this->enabled()) {
+            $this->debugbar['exceptions']->addException($e);
         }
 
         return $this;

@@ -54,7 +54,7 @@ class File implements FileInterface
      * Get file instance.
      *
      * @param  string  $filename
-     * @return FileInterface
+     * @return static
      */
     public static function instance($filename)
     {
@@ -293,7 +293,11 @@ class File implements FileInterface
 
         } elseif ($this->content === null) {
             // Decode RAW file.
-            $this->content = $this->decode($this->raw());
+            try {
+                $this->content = $this->decode($this->raw());
+            } catch (\Exception $e) {
+                throw new \RuntimeException(sprintf('Failed to read %s: %s', $this->filename, $e->getMessage()), 500, $e);
+            }
         }
 
         return $this->content;
@@ -331,6 +335,26 @@ class File implements FileInterface
 
         // Touch the directory as well, thus marking it modified.
         @touch(dirname($this->filename));
+    }
+
+    /**
+     * Rename file in the filesystem if it exists.
+     *
+     * @param $filename
+     * @return bool
+     */
+    public function rename($filename)
+    {
+        if ($this->exists() && !@rename($this->filename, $filename)) {
+            return false;
+        }
+
+        unset(static::$instances[$this->filename]);
+        static::$instances[$filename] = $this;
+
+        $this->filename = $filename;
+
+        return true;
     }
 
     /**

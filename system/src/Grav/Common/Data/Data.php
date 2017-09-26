@@ -1,20 +1,20 @@
 <?php
+/**
+ * @package    Grav.Common.Data
+ *
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Data;
 
 use RocketTheme\Toolbox\ArrayTraits\Countable;
 use RocketTheme\Toolbox\ArrayTraits\Export;
 use RocketTheme\Toolbox\ArrayTraits\ExportInterface;
 use RocketTheme\Toolbox\ArrayTraits\NestedArrayAccessWithGetters;
-use RocketTheme\Toolbox\Blueprints\Blueprints;
 use RocketTheme\Toolbox\File\File;
 use RocketTheme\Toolbox\File\FileInterface;
 
-/**
- * Recursive data object
- *
- * @author RocketTheme
- * @license MIT
- */
 class Data implements DataInterface, \ArrayAccess, \Countable, ExportInterface
 {
     use NestedArrayAccessWithGetters, Countable, Export;
@@ -211,18 +211,18 @@ class Data implements DataInterface, \ArrayAccess, \Countable, ExportInterface
      */
     public function extra()
     {
-        return $this->blueprints ? $this->blueprints->extra($this->items) : array();
+        return $this->blueprints()->extra($this->items);
     }
 
     /**
      * Return blueprints.
      *
-     * @return Blueprints
+     * @return Blueprint
      */
     public function blueprints()
     {
         if (!$this->blueprints){
-            $this->blueprints = new Blueprints;
+            $this->blueprints = new Blueprint;
         } elseif (is_callable($this->blueprints)) {
             // Lazy load blueprints.
             $blueprints = $this->blueprints;
@@ -251,7 +251,9 @@ class Data implements DataInterface, \ArrayAccess, \Countable, ExportInterface
      */
     public function exists()
     {
-        return $this->file()->exists();
+        $file = $this->file();
+
+        return $file && $file->exists();
     }
 
     /**
@@ -263,7 +265,9 @@ class Data implements DataInterface, \ArrayAccess, \Countable, ExportInterface
      */
     public function raw()
     {
-        return $this->file()->raw();
+        $file = $this->file();
+
+        return $file ? $file->raw() : '';
     }
 
     /**

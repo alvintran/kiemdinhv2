@@ -1,9 +1,11 @@
 ---
-title: Dịch vụ
-
+title: 'Dịch vụ'
+published: false
 content:
-    items: 
-        '@taxonomy.tag': [kiemdinhthietbi, kiemdinh]
+    items:
+        '@taxonomy.tag':
+            - kiemdinhthietbi
+            - kiemdinh
     order:
         by: date
         dir: desc

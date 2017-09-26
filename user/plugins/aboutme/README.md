@@ -11,6 +11,7 @@ You can also add links to your social network pages (Twitter, Facebook, GitHub, 
 * Let your visitors know a bit more about yourself, give your name, title/job and a nice description
 * Add links to your social network pages (Including: Twitter, Facebook, Google Plus, GitHub, LinkedIn, Instagram). It uses FontAwesome icons, if your theme already loads it, you don't need to enable the option in the plugin configuration
 * Add other social network pages
+* Add [h-card](http://microformats.org/wiki/h-card) microformats to your homepage to help re-decentralize the Web with the [Indieweb](https://indieweb.org) principles.
 
 # Installation
 
@@ -46,7 +47,12 @@ name: 'Santa Claus'         # Your full name
 title: 'Present Giver'      # Your title/job
 description: 'Santa Claus, Saint Nicholas, Saint Nick, Father Christmas, Kris Kringle, Santy, or simply Santa is a figure with legendary, historical and folkloric origins who, in many Western cultures, is said to bring gifts to the homes of good children on 24 December, the night before Christmas Day. The modern figure of Santa Claus is derived from the British figure of Father Christmas, the Dutch figure of Sinterklaas, and Saint Nicholas, the historical Greek bishop and gift-giver of Myra. During the Christianization of Germanic Europe, this figure may also have absorbed elements of the god Odin, who was associated with the Germanic pagan midwinter event of Yule and led the Wild Hunt, a ghostly procession through the sky'   # Tell us a bit about yourself
 
-picture_src: user/plugins/aboutme/assets/avatars/santa.jpg      # The path of your avatar, I recommand to use the admin plugin and go to the plugin configuration so you can upload your avatar there, the path will be filled for you.
+picture_src: # The path of your avatar, I recommand to use the admin plugin and go to the plugin configuration so you can upload your avatar there, the path will be filled for you.
+  user/plugins/aboutme/assets/avatars/santa.jpg:
+    name: santa.jpg
+    type: image/jpeg
+    size: 43391
+    path: user/plugins/aboutme/assets/avatars/santa.jpg
 
 gravatar:
   enabled: false                    # Enables gravatar, it will override picture_src option
@@ -127,6 +133,5 @@ The simplest way to update this plugin is via the [Grav Package Manager (GPM)](h
     bin/gpm update aboutme
 
 This command will check your Grav install to see if your AboutMe plugin is due for an update. If a newer release is found, you will be asked whether or not you wish to update. To continue, type `y` and hit enter. The plugin will automatically update and clear Grav's cache.
-
 
 > Note: Any changes you have made to any of the files listed under this directory will also be removed and replaced by the new set. Any files located elsewhere (for example a YAML settings file placed in `user/config/plugins`) will remain intact.

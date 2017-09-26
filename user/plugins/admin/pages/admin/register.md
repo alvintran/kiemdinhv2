@@ -4,11 +4,12 @@ form:
     - name: username
       type: text
       label: PLUGIN_ADMIN.USERNAME
-      placeholder: "lowercase chars only, e.g. 'admin'"
+      autofocus: true
+      placeholder: PLUGIN_ADMIN.USERNAME_PLACEHOLDER
       validate:
         required: true
         message: PLUGIN_LOGIN.USERNAME_NOT_VALID
-        pattern: '^[a-z0-9_-]{3,16}$'
+        config-pattern@: system.username_regex
 
     - name: email
       type: email
@@ -22,20 +23,20 @@ form:
     - name: password1
       type: password
       label: PLUGIN_ADMIN.PASSWORD
-      placeholder: "complex string at least 8 chars long"
+      placeholder: PLUGIN_ADMIN.PWD_PLACEHOLDER
       validate:
         required: true
         message: PLUGIN_ADMIN.PASSWORD_VALIDATION_MESSAGE
-        pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+        config-pattern@: system.pwd_regex
 
     - name: password2
       type: password
       label: PLUGIN_ADMIN.PASSWORD_CONFIRM
-      placeholder: "complex string at least 8 chars long"
+      placeholder: PLUGIN_ADMIN.PWD_PLACEHOLDER
       validate:
         required: true
         message: PLUGIN_ADMIN.PASSWORD_VALIDATION_MESSAGE
-        pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}'
+        config-pattern@: system.pwd_regex
 
     - name: fullname
       type: text

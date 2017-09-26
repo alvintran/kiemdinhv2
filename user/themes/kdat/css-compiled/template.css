@@ -61,7 +61,7 @@ p {
 
 #header {
   padding-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
   background-color: #188dd2; }
   #header:after {
     content: "";
@@ -80,7 +80,7 @@ p {
     color: #333;
     text-align: left;
     line-height: 25px;
-    font-size: 16px !important;
+    font-size: 16px;
     font-weight: bold;
   }
   #top-header .com-info p {
@@ -103,7 +103,7 @@ p {
   #top-header .logo-surround {
     position: relative;
     z-index: 2;
-    margin-top: 9px;
+    margin-top: 20px;
     float: left; }
   #top-header #logo {
     background: url(../images/logo2.png);
@@ -126,6 +126,7 @@ p {
     border-radius: 100%;
     background: #ed6f6d; }
     @media only all and (min-width: 60em) and (max-width: 74.938em) {
+      #top-header .com-info {display: block;}
       #top-header .logo-accent {
         width: 30px;
         height: 30px;
@@ -134,8 +135,7 @@ p {
   #header #navbar {
     font-size: 0.7rem;
     font-family: "Arial", "Helvetica", "Geneva", sans-serif;
-    border-radius: 3px;
-    margin-top: 0.5rem; }
+    border-radius: 3px;}
     @media only all and (max-width: 59.938em) {
       #header #navbar {
         background: none;
@@ -149,13 +149,19 @@ p {
       text-transform: uppercase; }
       #header #navbar ul li {
         float: left;
+        padding: 0 5px;
         position: relative; }
         #header #navbar ul li > a {
+          text-decoration: none;
           font-size: 12px;
           display: inline-block;
           padding: 0 8px;
-          line-height: 2.8rem;
+          line-height: 1.4rem;
           color: #f2f2f2;}
+        #header #navbar ul li > a:hover {
+            font-weight: bold;
+        }
+
           @media only all and (min-width: 60em) and (max-width: 74.938em) {
             #header #navbar ul li > a {
               padding: 0 0.8rem; } }
@@ -180,9 +186,20 @@ p {
         #header #navbar ul li:hover > ul {
           display: list-item; }
       @media only all and (max-width: 59.938em) {
-        #header #navbar ul,
-        #top-header .com-info {
-          display: none; } }
+        #header #navbar ul, #top-header .com-info {display: none;}
+        #top-header {height: auto !important; padding: 10px 5rem}
+        #top-header .logo-surround {
+            margin-top: 0;
+        }
+        #top-header #logo {
+            width: 140px;
+            height: 44px;
+        }
+        #top-header .com-name {
+            line-height: 25px !important;
+            font-size: 20px !important;
+            text-align: center;
+        }}
       #header #navbar ul ul {
         display: none;
         position: absolute;

@@ -1,14 +1,15 @@
 <?php
+/**
+ * @package    Grav.Common.Config
+ *
+ * @copyright  Copyright (C) 2014 - 2017 RocketTheme, LLC. All rights reserved.
+ * @license    MIT License; see LICENSE file for details.
+ */
+
 namespace Grav\Common\Config;
 
 use Grav\Common\Data\Data;
 
-/**
- * The Languages class contains configuration rules.
- *
- * @author RocketTheme
- * @license MIT
- */
 class Languages extends Data
 {
     public function checksum($checksum = null)
@@ -27,6 +28,15 @@ class Languages extends Data
         }
 
         return $this->modified;
+    }
+
+    public function timestamp($timestamp = null)
+    {
+        if ($timestamp !== null) {
+            $this->timestamp = $timestamp;
+        }
+
+        return $this->timestamp;
     }
 
     public function reformat()

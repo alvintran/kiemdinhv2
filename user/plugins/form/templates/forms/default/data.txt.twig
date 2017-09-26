@@ -1,4 +1,16 @@
-{% for field in form.fields %}
-{% set value = form.value(field.name) %}
-{{ field.name }}: {{ string((value is iterable ? value|json_encode : value)|e|nl2br)|replace({"\n":' ', "\r":' '}) }}
-{% endfor %}
+{%- macro render_field(form, fields) %}
+{%- for index, field in fields %}
+    {%- set input = attribute(field, "input@") %}
+        {%- if input is null or input == true %}
+        {%- set value = form.value(field.name ?? index) %}
+        {{- field.name ?? index }}: {{ string((value is iterable ? value|json_encode : value)) ~ "\r\n" }}
+    {%- else %}
+        {%- if field.fields %}
+        {{- _self.render_field(form, field.fields) }}
+        {%- endif %}
+    {%- endif %}
+{%- endfor %}
+{%- endmacro %}
+{%- autoescape false %}
+{{- _self.render_field(form, form.fields) ~ "\r\n" }}
+{%- endautoescape %}
